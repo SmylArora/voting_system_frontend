@@ -1,0 +1,35 @@
+@import "../../assets/styles/mixins";
+
+.candidate-list {
+  padding: 2rem;
+  display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.card-container{
+    display: flex;
+    gap : 20px;
+}
+
+
+.candidate-card {
+  @include card;
+  width: 250px;
+
+  h3 {
+    margin-bottom: 5px;
+  }
+
+  button {
+    grid-column: 1 / -1; // full width button
+      padding: 0.9rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #6E44FF;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../assets/styles/mixins";
+
+.results-container {
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.results-card {
+  @include card;
+  margin-bottom: 1rem;
+}

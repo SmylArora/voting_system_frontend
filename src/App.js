@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/SignUp/SignUp";
+import CandidateList from "./pages/Candidate/CandidateList";
+import VotePage from "./pages/Voting/VotePage";
+import Results from "./pages/Voting/Result";
+import AdminPanel from "./pages/Admin/AdminPanel";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import "./assets/styles/global.scss";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/candidates" element={<CandidateList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/vote/:id" element={<VotePage />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

@@ -1,0 +1,15 @@
+@import "../../assets/styles/mixins";
+
+.vote-container {
+  @include flex-center;
+  height: 80vh;
+}
+
+.vote-card {
+  @include card;
+  text-align: center;
+
+  button {
+    margin-top: 1rem;
+  }
+}
