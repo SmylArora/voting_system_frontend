@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/authSlice";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 
@@ -12,7 +13,7 @@ export default function Login() {
     password: "",
   });
 
-  const { token, status, error } = useSelector((state) => state.auth);
+  const { token, user, status, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,10 +21,14 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (token) {
-      navigate("/candidates");
+    if (token && user) {
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/candidates");
+      }
     }
-  }, [token, navigate]);
+  }, [token, user, navigate]);
 
   return (
     <div className="login-container">
@@ -69,3 +74,4 @@ export default function Login() {
     </div>
   );
 }
+

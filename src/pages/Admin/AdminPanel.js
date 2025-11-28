@@ -1,6 +1,7 @@
 import { useState } from "react";
 import API from "../../utils/axios";
 import "./AdminPanel.scss";
+import CandidateManagement from "../Candidate/CandidateTable";
 
 export default function AdminPanel() {
   const [form, setForm] = useState({
@@ -17,15 +18,11 @@ export default function AdminPanel() {
 
   return (
     <div className="admin-panel">
+      <h2>Manage Candidates</h2>
       <div className="admin-card">
-        <h2>Add Candidate</h2>
 
-        <form onSubmit={submitHandler}>
-          <input placeholder="Name" onChange={(e) => setForm({ ...form, name: e.target.value })} />
-          <input placeholder="Party" onChange={(e) => setForm({ ...form, party: e.target.value })} />
-          <input type="number" placeholder="Age" onChange={(e) => setForm({ ...form, age: e.target.value })} />
-          <button>Add Candidate</button>
-        </form>
+        <CandidateManagement />
+
       </div>
     </div>
   );

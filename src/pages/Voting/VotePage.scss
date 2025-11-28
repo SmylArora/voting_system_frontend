@@ -1,15 +1,107 @@
-@import "../../assets/styles/mixins";
+$bg: #F7F3FB;
+$card-bg: #ffffff;
+$border: #E5DEF0;
+$heading: #2E2A35;
+$subtext: #7A7485;
+$button: #6E44FF;
+$button-hover: #5B37D8;
+$cancel-bg: #EDE7F6;
+$cancel-text: #6E44FF;
 
 .vote-container {
-  @include flex-center;
-  height: 80vh;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8f4fc, #f2ecfa);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
 .vote-card {
-  @include card;
-  text-align: center;
+  background: $card-bg;
+  width: 100%;
+  max-width: 420px;
 
-  button {
-    margin-top: 1rem;
+  border: 1px solid $border;
+  border-radius: 16px;
+
+  padding: 2rem;
+//   text-align: center;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(0);
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $heading;
+    margin-top: 0px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $subtext;
+    font-size: 1rem;
+    .candidateName {
+        font-size: 20px;
+        color: #2E2A35;
+        font-weight: 600;
+    }
+    // margin-bottom: 2rem;
+  }
+  .confirm-text{
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .confirm-btn {
+    padding: 0.95rem;
+    background: $button;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    &:hover {
+      background: $button-hover;
+    }
+  }
+
+  .cancel-btn {
+    padding: 0.95rem;
+    background: $cancel-bg;
+    color: $cancel-text;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    &:hover {
+      background: darken($cancel-bg, 5%);
+    }
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .vote-card {
+    padding: 1.5rem;
   }
 }

@@ -21,9 +21,10 @@ export default function CandidateList() {
      {list.map((c) => (
         <div className="candidate-card" key={c._id}>
           <h3>{c.name}</h3>
-          <p>Party: {c.party}</p>
-          <p>Age: {c.age}</p>
-          <button onClick={() => navigate(`/vote/${c._id}`)}>Vote</button>
+          <p className="subtext">Party: {c.party}</p>
+            <p className="subtext">Age: {c.age}</p>
+          <button   onClick={() => navigate(`/vote/${c._id}`, { state: c })}>Vote</button>
+          
         </div>
       ))}
         </div>

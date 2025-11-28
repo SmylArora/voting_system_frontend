@@ -1,35 +1,93 @@
 @import "../../assets/styles/mixins";
 
+$bg: #F7F3FB;
+$card-bg: #ffffff;
+$border: #E5DEF0;
+$heading: #2E2A35;
+$subtext: #7A7485;
+$button: #6E44FF;
+$button-hover: #5B37D8;
+
 .candidate-list {
-  padding: 2rem;
+  min-height: 100vh;
+  padding: 2rem 3rem;
+  background: linear-gradient(to bottom right, #f8f4fc, #f2ecfa);
+
   display: flex;
-flex-direction: column;
-gap: 20px;
-}
-.card-container{
-    display: flex;
-    gap : 20px;
+  flex-direction: column;
+  gap: 2rem;
+
+  .title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: $heading;
+    text-align: center;
+    width: 100%;
+  }
 }
 
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  width: 100%;
+  justify-items: center; 
+}
 
 .candidate-card {
-  @include card;
-  width: 250px;
+  background: $card-bg;
+  width: 100%;
+  max-width: 290px;
+
+  border: 1px solid $border;
+  border-radius: 16px;
+
+  padding: 1.6rem;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+  }
 
   h3 {
-    margin-bottom: 5px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: $heading;
+    margin-bottom: 6px;
+  }
+
+  .subtext {
+    font-size: 1rem;
+    color: $subtext;
+    margin: 0;
   }
 
   button {
-    grid-column: 1 / -1; // full width button
-      padding: 0.9rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: #6E44FF;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: 0.25s ease;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.85rem;
+
+    background: $button;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      background: $button-hover;
+    }
   }
 }

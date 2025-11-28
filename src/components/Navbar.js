@@ -4,6 +4,7 @@ import './Navbar.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/authSlice';
 import { FiMenu, FiX } from 'react-icons/fi';
+import logo from "../assets/images/icons8-identity-64.png"
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <h2>Voting App</h2>
+        <img src={logo} alt='voter'/>
+        <h2>Voter</h2>
       </div>
 
       <div className={`navbar__menu ${menuOpen ? 'open' : ''}`}>
@@ -53,11 +55,7 @@ const Navbar = () => {
                   Candidates
                 </NavLink>
               </li>
-              <li>
-                <NavLink onClick={handleLinkClick} to="/vote" className={({ isActive }) => isActive ? 'active' : ''}>
-                  Vote
-                </NavLink>
-              </li>
+             
               <li>
                 <NavLink onClick={handleLinkClick} to="/results" className={({ isActive }) => isActive ? 'active' : ''}>
                   Results
@@ -69,13 +67,19 @@ const Navbar = () => {
           {user && user.role === 'admin' && (
             <>
               <li>
-                <NavLink onClick={handleLinkClick} to="/admin-panel" className={({ isActive }) => isActive ? 'active' : ''}>
-                  Admin Panel
+                <NavLink onClick={handleLinkClick} to="/admin
+                " className={({ isActive }) => isActive ? 'active' : ''}>
+                 Dashboard
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={handleLinkClick} to="/admin-dashboard" className={({ isActive }) => isActive ? 'active' : ''}>
-                  Dashboard
+                <NavLink onClick={handleLinkClick} to="/results" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Results
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={handleLinkClick} to="/candidates" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Candidates
                 </NavLink>
               </li>
             </>
